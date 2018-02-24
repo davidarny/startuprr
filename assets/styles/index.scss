@@ -1,0 +1,9 @@
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap-sprockets.scss";
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "hero";
+
+html,
+body {
+    width: 100%;
+    height: auto;
+}

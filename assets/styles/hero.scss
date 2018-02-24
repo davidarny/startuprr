@@ -1,0 +1,10 @@
+.navbar__logo__link {
+    padding: 0;
+    position: relative;
+
+    &__img {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
