@@ -18,15 +18,14 @@
   "devDependencies": {
     "@types/webpack": "^3.8.8",
     "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
+    "babel-loader": "^7.1.3",
     "babel-preset-env": "^1.6.1",
     "clean-webpack-plugin": "^0.1.18",
     "cross-env": "^5.1.3",
-    "css-loader": "^0.28.9",
-    "ejs-compiled-loader": "^1.1.0",
+    "css-loader": "^0.28.10",
     "extract-loader": "^1.0.2",
     "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^1.1.9",
+    "file-loader": "^1.1.10",
     "handlebars": "^4.0.11",
     "handlebars-loader": "^1.6.0",
     "html-loader": "^0.5.5",
@@ -36,9 +35,9 @@
     "style-loader": "^0.20.2",
     "url-loader": "^0.6.2",
     "webpack": "^3.11.0",
-    "webpack-bundle-analyzer": "^2.10.1",
-    "webpack-dev-server": "^2.11.1",
-    "webpack-merge": "^4.1.1"
+    "webpack-bundle-analyzer": "^2.11.1",
+    "webpack-dev-server": "^2.11.2",
+    "webpack-merge": "^4.1.2"
   },
   "dependencies": {
     "@types/bootstrap": "^3.3.38",
