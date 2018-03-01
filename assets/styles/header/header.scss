@@ -1,0 +1,77 @@
+@import "../variables";
+@import "../mixins";
+
+.header {
+    position: relative;
+    font-family: $raleway;
+
+    &__background {
+        //noinspection CssUnknownTarget
+        background: url("~assets/images/header_background.jpg") center;
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        opacity: 0.5;
+        filter: blur(2px);
+    }
+
+    &__item {
+        color: $main-color;
+        text-align: center;
+    }
+
+    &__title {
+        font-size: 2.5em;
+        font-weight: 800;
+
+        @include tablet {
+            font-size: 5em;
+        }
+
+        @include desktop {
+            font-size: 6.5em;
+        }
+    }
+
+    &__subtitle {
+        font-size: 1em;
+        font-weight: 500;
+
+        @include tablet {
+            font-size: 2em;
+        }
+
+        @include desktop {
+            font-size: 2.75em;
+        }
+
+        &__inner {
+            background-color: $main-color;
+            display: inline-block;
+            padding: 0.75em;
+            border-radius: 3px;
+        }
+
+        &--lower {
+            font-size: 0.75em;
+            color: white;
+            margin: 1.5em 0 3em;
+
+            @include tablet {
+                font-size: 1.25em;
+                padding: 1em;
+                border-radius: 5px;
+            }
+
+            @include desktop {
+                font-size: 1.75em;
+                border-radius: 7px;
+            }
+        }
+
+        &__first-word {
+            font-weight: 800;
+        }
+    }
+}

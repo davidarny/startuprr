@@ -6,7 +6,8 @@ const IS_DEV = process.env.NODE_ENV === "development";
 const NODE_DIR = path.normalize(path.join(__dirname, "./node_modules"));
 const APP_DIR = path.normalize(path.join(__dirname, "./app"));
 const ASSETS_DIR = path.normalize(path.join(__dirname, "./assets"));
-const TEMPLATE_PATH = path.normalize(path.join(__dirname, "./index.ejs"));
+const TEMPLATE_PATH = path.normalize(path.join(__dirname, "./index.hbs"));
+const ROOT_DIR = path.normalize(__dirname);
 
 const APP_TITLE = "Startuprr Project";
 
@@ -22,6 +23,10 @@ module.exports = {
             APP_DIR,
             ASSETS_DIR,
         ],
+        alias: {
+            assets: ASSETS_DIR,
+            root: ROOT_DIR,
+        },
     },
     plugins: [
         new webpack.DefinePlugin({
@@ -69,11 +74,10 @@ module.exports = {
                     },
                 ],
             },
-            // EJS
             {
-                test: TEMPLATE_PATH,
+                test: /\.hbs$/,
                 use: [
-                    "ejs-compiled-loader",
+                    "handlebars-loader",
                     "extract-loader",
                     {
                         loader: "html-loader",
