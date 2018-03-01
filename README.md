@@ -33,7 +33,7 @@ $ npm run build
 
 * [Webpack](https://webpack.js.org/) - bundler
 
-* [EJS](http://ejs.co/) - html template engine
+* [Handlebars](https://handlebarsjs.com/) - html template engine
 
 * [Sass](https://sass-lang.com/) - CSS with superpowers
 
