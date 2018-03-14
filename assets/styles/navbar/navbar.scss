@@ -1,0 +1,36 @@
+@import "../variables";
+@import "../mixins";
+
+.navbar {
+    min-height: $navbar-min-height;
+    padding-bottom: 20px;
+    margin-bottom: 0;
+
+    & .container {
+        position: relative;
+        top: 25px;
+    }
+
+    &-brand {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-nav {
+        text-transform: uppercase;
+    }
+
+    @include tablet {
+        &-brand {
+            display: none;
+        }
+
+        &-nav {
+            float: none !important;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
