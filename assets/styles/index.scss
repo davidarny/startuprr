@@ -30,11 +30,32 @@ body {
     font-weight: 800;
     font-size: 1.25em;
 
+    &__icon {
+        display: inline-block;
+        //noinspection CssUnknownTarget
+        background: url("~assets/images/title-shape.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 1.5em;
+        height: 0.8em;
+        vertical-align: middle;
+
+        &--left {
+            margin-right: 1em;
+        }
+
+        &--right {
+            margin-left: 1em;
+            transform: rotate(180deg);
+        }
+    }
+
     @include tablet {
         font-size: 2em;
     }
 
     @include desktop {
-        font-size: 3.75em;
+        font-size: 2.5em;
     }
 }
