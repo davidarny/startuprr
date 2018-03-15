@@ -3,7 +3,7 @@
 @import "mixins";
 @import "variables";
 @import "header/header";
-@import "navbar";
+@import "navbar/navbar";
 
 html,
 body {
@@ -40,7 +40,7 @@ body {
         background-repeat: no-repeat;
         width: 1.5em;
         height: 0.8em;
-        vertical-align: middle;
+        vertical-align: baseline;
 
         &--left {
             margin-right: 1em;

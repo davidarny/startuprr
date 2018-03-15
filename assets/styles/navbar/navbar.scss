@@ -20,6 +20,13 @@
 
     &-nav {
         text-transform: uppercase;
+        font-weight: 700;
+
+        li.active a {
+            background-color: $secondary-color !important;
+            color: #ffffff !important;
+            border-radius: 4px;
+        }
     }
 
     @include tablet {
