@@ -1,17 +1,16 @@
 @import "../variables";
 @import "../mixins";
+@import "../placeholders";
 
 .header {
     position: relative;
     font-family: $raleway;
 
     &__background {
-        //noinspection CssUnknownTarget
-        background: url("~assets/images/header-background.jpg");
-        background-position: center;
-        background-size: cover;
-        height: 100%;
+        @extend %bg-image-cover;
+        @include background-image("~assets/images/header-background.jpg");
         width: 100%;
+        height: 100%;
         position: absolute;
         opacity: 0.5;
         filter: blur(2px);
@@ -23,59 +22,47 @@
     }
 
     &__title {
-        font-size: 2.6em;
-        font-weight: 800;
-        position: relative;
-        top: -8px;
-
+        @include position($top: -8px);
         @include tablet {
             font-size: 4.9em;
         }
-
-        @include desktop {
+        @include large_tablet {
             font-size: 5.8em;
         }
-
-        @include large_desktop {
+        @include desktop {
             font-size: 3.2em;
         }
+        font-size: 2.6em;
+        font-weight: 800;
     }
 
     &__scroll-icon {
-        width: 45px;
-        height: 45px;
-        //noinspection CssUnknownTarget
-        background: url("~assets/images/scroll-icon.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        margin: auto;
-        margin-top: 2em;
-        cursor: pointer;
-        border-radius: 50%;
-
+        @extend %bg-image-cover;
+        @include background-image("~assets/images/scroll-icon.png");
         @include tablet {
             width: 55px;
             height: 55px;
         }
-
-        @include desktop {
+        @include large_tablet {
             width: 60px;
             height: 60px;
         }
+        width: 45px;
+        height: 45px;
+        margin: 2em auto auto;
+        cursor: pointer;
+        border-radius: 50%;
     }
 
     &__subtitle {
-        font-size: 1em;
-        font-weight: 500;
-
         @include tablet {
             font-size: 2em;
         }
-
-        @include desktop {
+        @include large_tablet {
             font-size: 1.8em;
         }
+        font-size: 1em;
+        font-weight: 500;
 
         &__inner {
             background-color: $main-color;
@@ -85,21 +72,18 @@
         }
 
         &--lower {
-            font-size: 0.85em;
-            color: white;
-            margin: 0 0 1em;
-            position: relative;
-            top: -12px;
-
+            @include position($top: -12px);
             @include tablet {
                 font-size: 1.25em;
                 border-radius: 5px;
             }
-
-            @include desktop {
+            @include large_tablet {
                 font-size: 1.5em;
                 border-radius: 7px;
             }
+            font-size: 0.85em;
+            color: white;
+            margin: 0 0 1em;
         }
 
         &__first-word {

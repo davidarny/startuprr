@@ -1,6 +1,7 @@
 @import "~bootstrap-sass/assets/stylesheets/_bootstrap-sprockets.scss";
 @import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 @import "mixins";
+@import "placeholders";
 @import "variables";
 @import "header/header";
 @import "navbar/navbar";
@@ -16,9 +17,7 @@ body {
     height: 100vh;
 
     &__inner {
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
+        @extend %vertical-center;
     }
 }
 
@@ -27,17 +26,20 @@ body {
 }
 
 .section-title {
+    @include tablet {
+        font-size: 2em;
+    }
+    @include large_tablet {
+        font-size: 2.5em;
+    }
     text-transform: uppercase;
     font-weight: 800;
     font-size: 1.25em;
 
     &__icon {
+        @extend %bg-image-cover;
+        @include background-image("~assets/images/title-shape.png");
         display: inline-block;
-        //noinspection CssUnknownTarget
-        background: url("~assets/images/title-shape.png");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
         width: 1.5em;
         height: 0.8em;
         vertical-align: baseline;
@@ -50,13 +52,5 @@ body {
             margin-left: 1em;
             transform: rotate(180deg);
         }
-    }
-
-    @include tablet {
-        font-size: 2em;
-    }
-
-    @include desktop {
-        font-size: 2.5em;
     }
 }

@@ -1,0 +1,45 @@
+@import "variables";
+
+@mixin tablet {
+    @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+        @content;
+    }
+}
+
+@mixin large_tablet {
+    @media (min-width: #{$desktop-width}) and (max-width: #{$large-desktop-width - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$large-desktop-width}) {
+        @content;
+    }
+}
+
+@mixin position($top: false, $left: false, $bottom: false, $right: false) {
+    position: relative;
+    @if ($top) {
+        top: $top;
+    }
+    @if ($left) {
+        left: $left;
+    }
+    @if ($bottom) {
+        bottom: $bottom;
+    }
+    @if ($right) {
+        right: $right;
+    }
+}
+
+@mixin background-image($url) {
+    background-image: url($url);
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

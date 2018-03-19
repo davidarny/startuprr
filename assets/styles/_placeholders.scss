@@ -1,0 +1,17 @@
+%bg-image-cover {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+%vertical-center {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+%flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

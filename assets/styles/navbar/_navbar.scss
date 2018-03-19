@@ -1,21 +1,30 @@
 @import "../variables";
+@import "../placeholders";
 @import "../mixins";
 
 .navbar {
+    @include tablet {
+        &-brand {
+            display: none;
+        }
+
+        &-nav {
+            @include flex-center;
+            float: none !important;
+        }
+    }
     min-height: $navbar-min-height;
     padding-bottom: 20px;
     margin-bottom: 0;
 
     & .container {
-        position: relative;
-        top: 25px;
+        @include position($top: 25px)
     }
 
     &-brand {
+        @extend %flex-center;
         padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        margin-left: 15px;
     }
 
     &-nav {
@@ -26,18 +35,6 @@
             background-color: $secondary-color !important;
             color: #ffffff !important;
             border-radius: 4px;
-        }
-    }
-
-    @include tablet {
-        &-brand {
-            display: none;
-        }
-
-        &-nav {
-            float: none !important;
-            display: flex;
-            justify-content: center;
         }
     }
 }
