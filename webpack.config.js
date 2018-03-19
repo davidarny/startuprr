@@ -10,7 +10,6 @@ const ASSETS_DIR = path.normalize(path.join(__dirname, "./assets"));
 const TEMPLATE_PATH = path.normalize(path.join(__dirname, "./index.hbs"));
 const ROOT_DIR = path.normalize(__dirname);
 const BUNDLE_ANALYZER_PORT = 8888;
-
 const APP_TITLE = "Startuprr Project";
 
 module.exports = {
@@ -52,7 +51,7 @@ module.exports = {
 
     module: {
         rules: [
-            // BABEL
+            // Babel
             {
                 test: /\.js$/,
                 loader: "babel-loader",
@@ -62,7 +61,7 @@ module.exports = {
                     cacheDirectory: IS_DEV,
                 },
             },
-            // CSS/SASS
+            // CSS/SCSS
             {
                 test: /\.scss$/,
                 use: [
@@ -82,6 +81,7 @@ module.exports = {
                     },
                 ],
             },
+            // Handlebars
             {
                 test: /\.hbs$/,
                 use: [
@@ -95,7 +95,7 @@ module.exports = {
                     },
                 ],
             },
-            // IMAGES
+            // Images
             {
                 test: /\.(jpe?g|png|gif|svg|webp)$/,
                 loader: "file-loader",
