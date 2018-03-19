@@ -1,12 +1,18 @@
 const webpack = require("webpack");
 const merge = require("webpack-merge");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const PurifyCSSPlugin = require("purifycss-webpack");
 const config = require("./webpack.config");
 const path = require("path");
+const glob = require("glob-all");
 
 const IS_DEV = process.env.NODE_ENV === "development";
 const OUTPUT_PATH = path.normalize(path.join(__dirname, "./dist"));
+const TEMPLATE_PATHS = [
+    path.normalize(path.join(__dirname, "./**/*.hbs")),
+    path.normalize(path.join(__dirname, "./assets/templates/**/*.hbs")),
+];
 
 module.exports = merge(config, {
     devtool: "cheap-module-source-map",
@@ -15,13 +21,20 @@ module.exports = merge(config, {
         filename: "[name].[chunkhash].js",
     },
     plugins: [
+        new PurifyCSSPlugin({
+            paths: glob.sync(TEMPLATE_PATHS),
+        }),
+        new UglifyJsPlugin({
+            sourceMap: true,
+            parallel: true,
+            cache: IS_DEV,
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             names: ["vendor", "manifest"],
         }),
-        new CleanWebpackPlugin([OUTPUT_PATH]),
         new ExtractTextPlugin({
             filename: "[name].[chunkhash].css",
-            allChunks: true,
+            allChunks: !IS_DEV,
         }),
     ],
     module: {

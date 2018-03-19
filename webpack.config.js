@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const IS_DEV = process.env.NODE_ENV === "development";
 const NODE_DIR = path.normalize(path.join(__dirname, "./node_modules"));
@@ -8,14 +9,15 @@ const APP_DIR = path.normalize(path.join(__dirname, "./app"));
 const ASSETS_DIR = path.normalize(path.join(__dirname, "./assets"));
 const TEMPLATE_PATH = path.normalize(path.join(__dirname, "./index.hbs"));
 const ROOT_DIR = path.normalize(__dirname);
+const BUNDLE_ANALYZER_PORT = 8888;
 
 const APP_TITLE = "Startuprr Project";
 
-// TODO: need tree shaking
 module.exports = {
+    cache: true,
     entry: {
         vendor: ["bootstrap-sass", "jquery"],
-        bundle: path.join(APP_DIR, "index"),
+        bundle: [path.join(APP_DIR, "index")],
     },
     resolve: {
         modules: [
@@ -29,10 +31,15 @@ module.exports = {
         },
     },
     plugins: [
+        new BundleAnalyzerPlugin({
+            analyzerPort: BUNDLE_ANALYZER_PORT,
+            openAnalyzer: true,
+        }),
         new webpack.DefinePlugin({
             IS_DEV: IS_DEV,
         }),
         new HtmlWebpackPlugin({
+            cache: IS_DEV,
             template: TEMPLATE_PATH,
             title: APP_TITLE,
         }),
@@ -51,7 +58,8 @@ module.exports = {
                 loader: "babel-loader",
                 exclude: /(node_modules)/,
                 options: {
-                    compact: IS_DEV,
+                    compact: !IS_DEV,
+                    cacheDirectory: IS_DEV,
                 },
             },
             // CSS/SASS
