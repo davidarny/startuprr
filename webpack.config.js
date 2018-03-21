@@ -4,11 +4,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const IS_DEV = process.env.NODE_ENV === "development";
-const NODE_DIR = path.normalize(path.join(__dirname, "./node_modules"));
-const APP_DIR = path.normalize(path.join(__dirname, "./app"));
-const ASSETS_DIR = path.normalize(path.join(__dirname, "./assets"));
-const TEMPLATE_PATH = path.normalize(path.join(__dirname, "./index.hbs"));
-const ROOT_DIR = path.normalize(__dirname);
+const NODE_DIR = path.join(__dirname, "./node_modules");
+const APP_DIR = path.join(__dirname, "./app");
+const ASSETS_DIR = path.join(__dirname, "./assets");
+const TEMPLATE_PATH = path.join(__dirname, "./index.hbs");
+const ROOT_DIR = path.join(__dirname, ".");
 const BUNDLE_ANALYZER_PORT = 8888;
 const APP_TITLE = "Startuprr Project";
 

@@ -8,10 +8,10 @@ const path = require("path");
 const glob = require("glob-all");
 
 const IS_DEV = process.env.NODE_ENV === "development";
-const OUTPUT_PATH = path.normalize(path.join(__dirname, "./dist"));
+const OUTPUT_PATH = path.join(__dirname, "./dist");
 const TEMPLATE_PATHS = [
-    path.normalize(path.join(__dirname, "./**/*.hbs")),
-    path.normalize(path.join(__dirname, "./assets/templates/**/*.hbs")),
+    path.join(__dirname, "./**/*.hbs"),
+    path.join(__dirname, "./assets/templates/**/*.hbs"),
 ];
 
 module.exports = merge(config, {

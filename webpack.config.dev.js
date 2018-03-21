@@ -4,8 +4,8 @@ const merge = require("webpack-merge");
 const config = require("./webpack.config");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-const OUTPUT_PATH = path.normalize(path.join(__dirname, "./dist"));
-const ASSETS_PATH = path.normalize(path.join(__dirname, "./assets"));
+const OUTPUT_PATH = path.join(__dirname, "./dist");
+const ASSETS_PATH = path.join(__dirname, "./assets");
 const DEV_SERVER_PORT = 8080;
 
 module.exports = merge(config, {

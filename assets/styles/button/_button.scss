@@ -1,0 +1,32 @@
+@import "../variables";
+
+.button {
+    $button-border-color: #dedede;
+    $font-size: 0.75em;
+    $line-height: 1.2;
+
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid $button-border-color;
+    border-radius: $base-border-radius;
+    color: $secondary-text-color;
+    text-transform: uppercase;
+    line-height: $line-height;
+    padding: $font-size;
+    margin: auto;
+    font-size: $font-size;
+
+    &__link,
+    &__link:hover,
+    &__link:focus,
+    &__link:visited {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    &:hover {
+        background-color: $secondary-color;
+        color: #ffffff;
+        border: 1px solid $secondary-color;
+    }
+}

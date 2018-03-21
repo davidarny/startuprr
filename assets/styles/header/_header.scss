@@ -3,17 +3,24 @@
 @import "../placeholders";
 
 .header {
+    $background-opacity: 0.5;
+    $background-blur: 2px;
+
+    @extend %viewport-height;
     position: relative;
     font-family: $raleway;
+
+    &__inner {
+        @extend %vertical-center;
+    }
 
     &__background {
         @extend %bg-image-cover;
         @include background-image("~assets/images/header-background.jpg");
-        width: 100%;
-        height: 100%;
+        @include square_size(100%);
         position: absolute;
-        opacity: 0.5;
-        filter: blur(2px);
+        opacity: $background-opacity;
+        filter: blur($background-blur);
     }
 
     &__item {
@@ -40,15 +47,12 @@
         @extend %bg-image-cover;
         @include background-image("~assets/images/scroll-icon.png");
         @include tablet {
-            width: 55px;
-            height: 55px;
+            @include square_size(55px)
         }
         @include large_tablet {
-            width: 60px;
-            height: 60px;
+            @include square_size(60px)
         }
-        width: 45px;
-        height: 45px;
+        @include square_size(45px);
         margin: 2em auto auto;
         cursor: pointer;
         border-radius: 50%;
@@ -63,23 +67,22 @@
         }
         font-size: 1em;
         font-weight: 500;
+        border-radius: $base-border-radius;
 
         &__inner {
             background-color: $main-color;
             display: inline-block;
             padding: 0.75em;
-            border-radius: 3px;
+            border-radius: $base-border-radius;
         }
 
         &--lower {
             @include position($top: -12px);
             @include tablet {
                 font-size: 1.25em;
-                border-radius: 5px;
             }
             @include large_tablet {
                 font-size: 1.5em;
-                border-radius: 7px;
             }
             font-size: 0.85em;
             color: white;

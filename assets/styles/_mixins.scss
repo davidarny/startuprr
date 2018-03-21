@@ -38,8 +38,12 @@
     background-image: url($url);
 }
 
-@mixin flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@mixin horizontal-center {
+    display: block;
+    margin: auto;
+}
+
+@mixin square_size($dimensions) {
+    width: $dimensions;
+    height: $dimensions;
 }

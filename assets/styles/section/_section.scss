@@ -1,0 +1,10 @@
+@import "../placeholders";
+
+.section {
+    width: 100%;
+    position: relative;
+
+    &__inner {
+        width: 100%;
+    }
+}

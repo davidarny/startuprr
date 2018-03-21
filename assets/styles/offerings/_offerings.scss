@@ -1,0 +1,53 @@
+@import "../variables";
+@import "../placeholders";
+
+.offerings {
+    $offerings-title-color: #606060;
+    $offerings-icon-dimensions: 100px;
+    $items-top-margin: 50px;
+    $item-bottom-margin: 30px;
+    $padding-top-bottom: 85px;
+
+    padding: $padding-top-bottom 0 $padding-top-bottom;
+
+    &__items {
+        margin-top: $items-top-margin;
+    }
+
+    &__item {
+        text-align: center;
+        margin-bottom: $item-bottom-margin;
+
+        &__icon {
+            width: $offerings-icon-dimensions;
+            height: $offerings-icon-dimensions;
+            background-color: $main-color;
+            border-radius: 50%;
+            margin: auto auto $item-bottom-margin;
+        }
+
+        &__title {
+            color: $offerings-title-color;
+            text-transform: uppercase;
+            line-height: 1.2;
+            font-weight: bold;
+            margin: auto auto ($item-bottom-margin - 10px);
+        }
+
+        &__subtitle {
+            color: $secondary-text-color;
+            line-height: 1.7;
+            margin: auto auto ($item-bottom-margin - 10px);
+        }
+    }
+
+    &__item:last-child {
+        margin-bottom: 0;
+    }
+
+    &__item:hover {
+        & .offerings__item__icon {
+            background-color: $secondary-color;
+        }
+    }
+}

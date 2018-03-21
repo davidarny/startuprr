@@ -1,17 +1,28 @@
+@import "variables";
+
 %bg-image-cover {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
+%bg-image-contain {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 %vertical-center {
-    position: relative;
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
 }
 
-%flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+%viewport-height {
+    min-height: 100vh;
 }
+
+%secondary-color {
+    color: $secondary-color;
+}
+

@@ -1,56 +1,21 @@
+// Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/_bootstrap-sprockets.scss";
 @import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// Helpers
 @import "mixins";
 @import "placeholders";
 @import "variables";
+// Base components
+@import "section/section";
+@import "button/button";
+// Components
 @import "header/header";
 @import "navbar/navbar";
+@import "section_title/section_title";
+@import "offerings/offerings";
 
 html,
 body {
     width: 100%;
     height: auto;
-}
-
-.section {
-    width: 100%;
-    height: 100vh;
-
-    &__inner {
-        @extend %vertical-center;
-    }
-}
-
-.secondary-color {
-    color: $secondary-color;
-}
-
-.section-title {
-    @include tablet {
-        font-size: 2em;
-    }
-    @include large_tablet {
-        font-size: 2.5em;
-    }
-    text-transform: uppercase;
-    font-weight: 800;
-    font-size: 1.25em;
-
-    &__icon {
-        @extend %bg-image-cover;
-        @include background-image("~assets/images/title-shape.png");
-        display: inline-block;
-        width: 1.5em;
-        height: 0.8em;
-        vertical-align: baseline;
-
-        &--left {
-            margin-right: 1em;
-        }
-
-        &--right {
-            margin-left: 1em;
-            transform: rotate(180deg);
-        }
-    }
 }

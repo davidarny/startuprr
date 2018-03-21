@@ -1,14 +1,15 @@
 // Colors
-$main-color: #333333;
-$secondary-color: #00a99d;
+$main-color: #333333 !default;
+$secondary-color: #00a99d !default;
+$secondary-text-color: #8a8a8a !default;
 
 // Fonts
 $raleway: 'Raleway', sans-serif;
-
-// Sizes
-$navbar-min-height: 100px;
 
 // Breakpoints
 $tablet-width: 768px;
 $desktop-width: 1024px;
 $large-desktop-width: 1200px;
+
+// Other
+$base-border-radius: 4px !default;

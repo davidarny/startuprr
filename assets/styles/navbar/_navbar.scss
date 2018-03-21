@@ -3,18 +3,21 @@
 @import "../mixins";
 
 .navbar {
+    $navbar-min-height: 100px;
+    $padding-bottom: 20px;
+
     @include tablet {
         &-brand {
             display: none;
         }
 
         &-nav {
-            @include flex-center;
+            @include horizontal-center;
             float: none !important;
         }
     }
     min-height: $navbar-min-height;
-    padding-bottom: 20px;
+    padding-bottom: $padding-bottom;
     margin-bottom: 0;
 
     & .container {
@@ -22,19 +25,29 @@
     }
 
     &-brand {
-        @extend %flex-center;
+        @extend %vertical-center;
         padding: 0;
         margin-left: 15px;
     }
 
+    &-header {
+        @include large_tablet {
+            position: initial;
+        }
+        @include desktop {
+            position: initial;
+        }
+        position: relative;
+    }
+
     &-nav {
         text-transform: uppercase;
-        font-weight: 700;
+        font-weight: 600;
 
         li.active a {
             background-color: $secondary-color !important;
             color: #ffffff !important;
-            border-radius: 4px;
+            border-radius: $base-border-radius;
         }
     }
 }

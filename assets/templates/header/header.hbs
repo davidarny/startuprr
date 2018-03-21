@@ -3,25 +3,11 @@
     <div class="section__inner header__inner">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-md-12 col-lg-6 col-lg-offset-0">
-                    <div class="row header__item header__subtitle header__subtitle--upper">
-                        <span class="text-uppercase">What are you waiting for?</span>
-                    </div>
-                    <div class="row header__item header__title">
-                        <span class="text-uppercase">Let's be creative!</span>
-                    </div>
-                    <div class="row header__item header__subtitle header__subtitle--lower">
-                        <div class="header__subtitle__inner">
-                            <span class="header__subtitle__first-word"><span class="secondary-color">S</span><span>tartuprr,</span></span>
-                            <span class="text-uppercase">NEXT GENERATION & HIGHLY FLEXIBLE WORDPRESS THEME</span>
-                        </div>
-                    </div>
-                    <div class="row header__item header__section-title section-title">
-                        <span class="section-title__icon section-title__icon--left"></span>
-                        <span class="secondary-color">Start</span>
-                        <span> doing that</span>
-                        <span class="section-title__icon section-title__icon--right"></span>
-                    </div>
+                <div class="col-sm-12 col-md-12 col-lg-6 col-lg-offset-0">
+                    {{> partials/subtitle_upper}}
+                    {{> partials/title}}
+                    {{> partials/subtitle_lower}}
+                    {{> ../partials/section_title firstWord="Start" restWords="doing this"}}
                     <div class="header__item header__scroll-icon"></div>
                 </div>
             </div>
