@@ -5,10 +5,12 @@
 .header {
     $background-opacity: 0.5;
     $background-blur: 2px;
+    $title-font-size: 2.475em;
 
     @extend %viewport-height;
     position: relative;
     font-family: $raleway;
+    line-height: 1.2;
 
     &__inner {
         @extend %vertical-center;
@@ -31,16 +33,17 @@
     &__title {
         @include position($top: -8px);
         @include tablet {
-            font-size: 4.9em;
+            font-size: 4.7em;
         }
         @include large_tablet {
-            font-size: 5.8em;
+            font-size: 5.6em;
         }
         @include desktop {
-            font-size: 3.2em;
+            font-size: 4.5em;
         }
-        font-size: 2.6em;
+        font-size: $title-font-size;
         font-weight: 800;
+        margin: 0.15em 0 0.25em;
     }
 
     &__scroll-icon {
@@ -59,21 +62,20 @@
     }
 
     &__subtitle {
-        @include tablet {
-            font-size: 2em;
-        }
-        @include large_tablet {
-            font-size: 1.8em;
-        }
-        font-size: 1em;
         font-weight: 500;
         border-radius: $base-border-radius;
 
-        &__inner {
-            background-color: $main-color;
-            display: inline-block;
-            padding: 0.75em;
-            border-radius: $base-border-radius;
+        &--upper {
+            @include tablet {
+                font-size: 1.6em;
+            }
+            @include large_tablet {
+                font-size: 1.8em;
+            }
+            @include desktop {
+                font-size: 1.3em;
+            }
+            font-size: 0.8em;
         }
 
         &--lower {
@@ -84,13 +86,27 @@
             @include large_tablet {
                 font-size: 1.5em;
             }
-            font-size: 0.85em;
+            @include desktop {
+                font-size: 1.2em;
+            }
+            font-size: 0.665em;
             color: white;
             margin: 0 0 1em;
+
+            .header__subtitle__inner {
+                background-color: $main-color;
+                display: inline-block;
+                padding: 0.75em;
+                border-radius: $base-border-radius;
+            }
         }
 
         &__first-word {
             font-weight: 800;
+
+            &__first-letter {
+                @extend %secondary-color;
+            }
         }
     }
 }

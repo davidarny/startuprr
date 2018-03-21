@@ -17,18 +17,18 @@
     text-align: center;
     text-transform: uppercase;
     font-weight: $section-font-weight;
-    font-size: 1.25em;
+    font-size: 1.8em;
 
     &__first-word {
         @extend %secondary-color;
     }
 
     &__subtitle {
-        font-size: 0.8em;
+        font-size: 0.65em;
         font-weight: $subtitle-font-weight;
         color: $secondary-text-color;
         text-transform: none;
-        margin-top: 1em;
+        margin-top: 0.5em;
     }
 
     &__icon {
