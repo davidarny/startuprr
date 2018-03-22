@@ -12,6 +12,11 @@
     background-position: center;
 }
 
+%horizontal-center {
+    display: block;
+    margin: auto;
+}
+
 %vertical-center {
     position: absolute;
     top: 50%;

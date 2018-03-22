@@ -19,11 +19,20 @@
         margin-bottom: $item-bottom-margin;
 
         &__icon {
+            position: relative;
+            color: $background-color;
+            font-size: 2.6em;
             width: $offerings-icon-dimensions;
             height: $offerings-icon-dimensions;
             background-color: $main-color;
             border-radius: 50%;
             margin: auto auto $item-bottom-margin;
+            text-align: center;
+
+            &__wrapper {
+                width: inherit;
+                @extend %vertical-center;
+            }
         }
 
         &__title {

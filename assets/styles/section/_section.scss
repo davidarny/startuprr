@@ -3,8 +3,14 @@
 .section {
     width: 100%;
     position: relative;
+    color: $main-color;
 
     &__inner {
         width: 100%;
+    }
+
+    &--dark {
+        background-color: $main-color;
+        color: $background-color;
     }
 }

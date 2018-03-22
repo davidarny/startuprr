@@ -46,7 +46,7 @@
 
         li.active a {
             background-color: $secondary-color !important;
-            color: #ffffff !important;
+            color: $background-color !important;
             border-radius: $base-border-radius;
         }
     }

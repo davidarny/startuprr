@@ -1,6 +1,7 @@
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/_bootstrap-sprockets.scss";
-@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~ionicons/dist/scss/ionicons";
 // Helpers
 @import "mixins";
 @import "placeholders";
@@ -18,4 +19,6 @@ html,
 body {
     width: 100%;
     height: auto;
+    background-color: $background-color;
+    font-family: $raleway;
 }

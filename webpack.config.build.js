@@ -51,6 +51,7 @@ module.exports = merge(config, {
                                 sourceMap: IS_DEV,
                             },
                         },
+                        "resolve-url-loader",
                         {
                             loader: "sass-loader",
                             options: {

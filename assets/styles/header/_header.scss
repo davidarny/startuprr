@@ -9,7 +9,6 @@
 
     @extend %viewport-height;
     position: relative;
-    font-family: $raleway;
     line-height: 1.2;
 
     &__inner {
@@ -26,7 +25,6 @@
     }
 
     &__item {
-        color: $main-color;
         text-align: center;
     }
 
