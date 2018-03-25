@@ -6,7 +6,7 @@
     $navbar-min-height: 100px;
     $padding-bottom: 20px;
 
-    @include tablet {
+    @include md {
         &-brand {
             display: none;
         }
@@ -31,10 +31,7 @@
     }
 
     &-header {
-        @include large_tablet {
-            position: initial;
-        }
-        @include desktop {
+        @include lg {
             position: initial;
         }
         position: relative;

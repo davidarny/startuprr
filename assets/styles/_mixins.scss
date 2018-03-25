@@ -1,26 +1,45 @@
 @import "variables";
+@import "functions";
 
-@mixin phone {
-    @media (max-width: #{$tablet-width - 1px}) {
-        @content;
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+    $u-min-vw: unit($min-vw);
+    $u-max-vw: unit($max-vw);
+    $u-min-fz: unit($min-font-size);
+    $u-max-fz: unit($max-font-size);
+
+    @if $u-min-vw == $u-max-vw and $u-min-vw == $u-min-fz and $u-min-vw == $u-max-fz {
+        & {
+            font-size: $min-font-size;
+            @media screen and (min-width: $min-vw) {
+                font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+            }
+            @media screen and (min-width: $max-vw) {
+                font-size: $max-font-size;
+            }
+        }
     }
 }
 
-@mixin tablet {
-    @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
-        @content;
+@mixin breakpoint($mq-min, $mq-max: false, $max-min: max-width) {
+    @if $mq-max == false {
+        @media ($max-min: $mq-min) {
+            @content;
+        }
+    } @else {
+        @media (min-width: $mq-min) and (max-width: $mq-max) {
+            @content;
+        }
     }
 }
 
-@mixin large_tablet {
-    @media (min-width: #{$desktop-width}) and (max-width: #{$large-desktop-width - 1px}) {
-        @content;
+@mixin font-size-map($font-size-map, $base: false) {
+    @if $base != false {
+        font-size: em($base);
     }
-}
-
-@mixin desktop {
-    @media (min-width: #{$large-desktop-width}) {
-        @content;
+    @each $breakpoint, $font-size in $font-size-map {
+        @include breakpoint($breakpoint) {
+            font-size: em($font-size);
+        }
     }
 }
 
@@ -52,4 +71,32 @@
 @mixin square_size($dimensions) {
     width: $dimensions;
     height: $dimensions;
+}
+
+@mixin line-height($font-size, $line-height: $font-size) {
+    line-height: $line-height/$font-size;
+}
+
+@mixin xs {
+    @include breakpoint($xs - $separator) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @include breakpoint($sm, $md - $separator) {
+        @content;
+    }
+}
+
+@mixin md {
+    @include breakpoint($md, $lg - $separator) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @include breakpoint($lg, false, min-width) {
+        @content;
+    }
 }

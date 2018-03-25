@@ -5,6 +5,7 @@
 // Helpers
 @import "mixins";
 @import "placeholders";
+@import "functions";
 @import "variables";
 // Base components
 @import "section/section";
@@ -15,10 +16,14 @@
 @import "section_title/section_title";
 @import "offerings/offerings";
 
+html {
+}
+
 html,
 body {
     width: 100%;
     height: auto;
     background-color: $background-color;
-    font-family: $raleway;
+    font-size: $browser-context * 1px;
+    font-family: $raleway-font;
 }

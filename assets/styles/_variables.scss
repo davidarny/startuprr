@@ -5,12 +5,17 @@ $secondary-color: #00a99d !default;
 $secondary-text-color: #8a8a8a !default;
 
 // Fonts
-$raleway: 'Raleway', sans-serif;
+$raleway-font: 'Raleway', sans-serif;
 
 // Breakpoints
-$tablet-width: 768px;
-$desktop-width: 1024px;
-$large-desktop-width: 1200px;
+$lg: 1200px;
+$xmd: 1024px;
+$md: 768px;
+$xsm: 414px;
+$sm: 375px;
+$xs: 320px;
 
 // Other
 $base-border-radius: 4px !default;
+$browser-context: 14;
+$separator: 0.02px;

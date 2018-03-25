@@ -7,17 +7,13 @@
     $subtitle-font-weight: 400;
     $icons-size: 1em;
     $icons-aside-margin: 0.5em;
+    $min-font: 22px;
+    $max-font: 26px;
 
-    @include tablet {
-        font-size: 2em;
-    }
-    @include large_tablet {
-        font-size: 2.5em;
-    }
+    @include fluid-type($xs, $lg, $min-font, $max-font);
     text-align: center;
     text-transform: uppercase;
     font-weight: $section-font-weight;
-    font-size: 1.8em;
 
     &__first-word {
         @extend %secondary-color;

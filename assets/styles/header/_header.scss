@@ -5,11 +5,9 @@
 .header {
     $background-opacity: 0.5;
     $background-blur: 2px;
-    $title-font-size: 2.475em;
 
     @extend %viewport-height;
     position: relative;
-    line-height: 1.2;
 
     &__inner {
         @extend %vertical-center;
@@ -29,17 +27,11 @@
     }
 
     &__title {
+        $min-font: 30px;
+        $max-font: 64px;
+
         @include position($top: -8px);
-        @include tablet {
-            font-size: 4.7em;
-        }
-        @include large_tablet {
-            font-size: 5.6em;
-        }
-        @include desktop {
-            font-size: 4.5em;
-        }
-        font-size: $title-font-size;
+        @include fluid-type($xs, $lg, $min-font, $max-font);
         font-weight: 800;
         margin: 0.15em 0 0.25em;
     }
@@ -47,11 +39,11 @@
     &__scroll-icon {
         @extend %bg-image-cover;
         @include background-image("~assets/images/scroll-icon.png");
-        @include tablet {
+        @include md {
             @include square_size(55px)
         }
-        @include large_tablet {
-            @include square_size(60px)
+        @include lg {
+            @include square_size(60px);
         }
         @include square_size(45px);
         margin: 2em auto auto;
@@ -64,30 +56,18 @@
         border-radius: $base-border-radius;
 
         &--upper {
-            @include tablet {
-                font-size: 1.6em;
-            }
-            @include large_tablet {
-                font-size: 1.8em;
-            }
-            @include desktop {
-                font-size: 1.3em;
-            }
-            font-size: 0.8em;
+            $min-font: 14px;
+            $max-font: 18px;
+
+            @include fluid-type($xs, $lg, $min-font, $max-font);
         }
 
         &--lower {
+            $min-font: 8px;
+            $max-font: 18px;
+
+            @include fluid-type($xs, $lg, $min-font, $max-font);
             @include position($top: -12px);
-            @include tablet {
-                font-size: 1.25em;
-            }
-            @include large_tablet {
-                font-size: 1.5em;
-            }
-            @include desktop {
-                font-size: 1.2em;
-            }
-            font-size: 0.665em;
             color: white;
             margin: 0 0 1em;
 
