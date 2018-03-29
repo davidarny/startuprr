@@ -1,0 +1,46 @@
+@import "../mixins";
+
+.features {
+    $base-padding: 75px;
+    $icon-font-size: 40px;
+    $list-item-max-width: 320px;
+
+    padding: $base-padding 0;
+
+    &__list {
+        padding-top: 90px;
+        padding-left: 15px;
+
+        &__item {
+            margin-bottom: 70px;
+            max-width: $list-item-max-width;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &__icon {
+        @include square_size($icon-font-size);
+        width: 20%;
+        display: block;
+        font-size: $icon-font-size;
+        float: left;
+    }
+
+    &__description {
+        width: 80%;
+        float: right;
+        display: block;
+    }
+
+    &__title {
+        @extend .offerings__item__title;
+        color: $background-color;
+    }
+
+    &__subtitle {
+        @extend .offerings__item__subtitle;
+    }
+}

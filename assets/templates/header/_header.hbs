@@ -4,10 +4,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-8 col-lg-offset-0">
-                    {{> partials/subtitle_upper}}
-                    {{> partials/title}}
-                    {{> partials/subtitle_lower}}
-                    {{> ../partials/section_title firstWord="Start" restWords="doing this"}}
+                    {{> partials/_subtitle_upper}}
+                    {{> partials/_title}}
+                    {{> partials/_subtitle_lower}}
+                    {{> partials/_section_title
+                        focusPart="first"
+                        firstPart="Start"
+                        lastPart="doing this"
+                    }}
                     <div class="header__item header__scroll-icon"></div>
                 </div>
             </div>

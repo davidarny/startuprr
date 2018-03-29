@@ -7,7 +7,7 @@
     $subtitle-font-weight: 400;
     $icons-size: 1em;
     $icons-aside-margin: 0.5em;
-    $min-font: 22px;
+    $min-font: 20px;
     $max-font: 26px;
 
     @include fluid-type($xs, $lg, $min-font, $max-font);
@@ -15,8 +15,16 @@
     text-transform: uppercase;
     font-weight: $section-font-weight;
 
-    &__first-word {
-        @extend %secondary-color;
+    &--first-word-focus {
+        > .section-title__first-part {
+            @extend %secondary-color;
+        }
+    }
+
+    &--second-word-focus {
+        > .section-title__last-part {
+            @extend %secondary-color;
+        }
     }
 
     &__subtitle {

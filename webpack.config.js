@@ -4,12 +4,13 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-const OUTPUT_PATH = path.join(__dirname, "./dist");
+const OUTPUT_PATH = path.join(__dirname, "dist");
 const IS_DEV = process.env.NODE_ENV === "development";
-const NODE_DIR = path.join(__dirname, "./node_modules");
-const APP_DIR = path.join(__dirname, "./app");
-const ASSETS_DIR = path.join(__dirname, "./assets");
-const TEMPLATE_PATH = path.join(__dirname, "./index.hbs");
+const NODE_DIR = path.join(__dirname, "node_modules");
+const APP_DIR = path.join(__dirname, "app");
+const ASSETS_DIR = path.join(__dirname, "assets");
+const TEMPLATES_PATH = path.join(__dirname, "assets", "templates");
+const TEMPLATE_PATH = path.join(__dirname, "index.hbs");
 const ROOT_DIR = path.join(__dirname, ".");
 const BUNDLE_ANALYZER_PORT = 8888;
 const APP_TITLE = "Startuprr Project";
@@ -89,7 +90,12 @@ module.exports = {
             {
                 test: /\.hbs$/,
                 use: [
-                    "handlebars-loader",
+                    {
+                        loader: "handlebars-loader",
+                        options: {
+                            helperDirs: [TEMPLATES_PATH],
+                        },
+                    },
                     "extract-loader",
                     {
                         loader: "html-loader",

@@ -2,8 +2,9 @@ const path = require("path");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const config = require("./webpack.config");
+const ReloadPlugin = require("reload-html-webpack-plugin");
 
-const ASSETS_PATH = path.join(__dirname, "./assets");
+const ASSETS_PATH = path.join(__dirname, "assets");
 const DEV_SERVER_PORT = 8080;
 
 module.exports = merge(config, {
@@ -21,6 +22,7 @@ module.exports = merge(config, {
         filename: "[name].js",
     },
     plugins: [
+        new ReloadPlugin(),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
     ],
