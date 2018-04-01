@@ -19,7 +19,21 @@ module.exports = merge(config, {
             sourceMap: true,
             parallel: true,
             cache: IS_DEV,
+            uglifyOptions: {
+                beautify: false,
+                comments: false,
+                compress: {
+                    sequences: true,
+                    booleans: true,
+                    loops: true,
+                    unused: true,
+                    warnings: false,
+                    drop_console: !IS_DEV,
+                    unsafe: true,
+                },
+            },
         }),
+        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             names: ["vendor", "manifest"],
         }),
