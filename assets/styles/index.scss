@@ -1,6 +1,8 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+// Ionicons icons
+$ionicons-font-path: "~assets/fonts";
 @import "~ionicons/dist/scss/ionicons";
 // Helpers
 @import "mixins";
