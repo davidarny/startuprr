@@ -105,17 +105,9 @@ module.exports = {
                     },
                 ],
             },
-            // Fonts
+            // Images & fonts
             {
-                test: /\.(woff2?|ttf|otf|eot|svg)$/,
-                loader: "file-loader",
-                options: {
-                    name: "[path][name].[ext]",
-                },
-            },
-            // Images
-            {
-                test: /\.(jpe?g|png|gif|webp)$/,
+                test: /\.(jpe?g|png|gif|webp|woff2?|ttf|otf|eot|svg)$/,
                 loader: "file-loader",
                 options: {
                     name: "[path][name].[hash].[ext]",
