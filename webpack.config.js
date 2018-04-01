@@ -39,7 +39,7 @@ module.exports = {
             openAnalyzer: true,
         }),
         new webpack.DefinePlugin({
-            IS_DEV: IS_DEV,
+            IS_DEV: JSON.stringify(IS_DEV),
         }),
         new HtmlWebpackPlugin({
             cache: IS_DEV,
@@ -52,7 +52,6 @@ module.exports = {
             "window.jQuery": "jquery",
         }),
     ],
-
     module: {
         rules: [
             // Babel
@@ -73,14 +72,15 @@ module.exports = {
                     {
                         loader: "css-loader",
                         options: {
-                            sourceMap: IS_DEV,
+                            sourceMap: true,
+                            minimize: !IS_DEV,
                         },
                     },
                     "resolve-url-loader",
                     {
                         loader: "sass-loader",
                         options: {
-                            sourceMap: IS_DEV,
+                            sourceMap: true,
                             includePaths: [ASSETS_DIR],
                         },
                     },

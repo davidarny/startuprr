@@ -11,10 +11,10 @@ module.exports = merge(config, {
     devtool: "eval",
     devServer: {
         open: true,
-        port: DEV_SERVER_PORT,
-        hot: true,
-        contentBase: [ASSETS_PATH],
         watchContentBase: true,
+        hot: true,
+        port: DEV_SERVER_PORT,
+        contentBase: [ASSETS_PATH],
     },
     output: {
         pathinfo: true,
