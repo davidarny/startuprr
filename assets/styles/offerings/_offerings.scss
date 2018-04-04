@@ -41,13 +41,13 @@
             text-transform: uppercase;
             line-height: 1.2;
             font-weight: bold;
-            margin: auto auto ($item-bottom-margin - 10px);
+            margin: auto auto em(($item-bottom-margin - 15px));
         }
 
         &__subtitle {
             color: $secondary-text-color;
             line-height: 1.7;
-            margin: auto auto ($item-bottom-margin - 10px);
+            margin: auto auto em(($item-bottom-margin - 15px));
         }
     }
 

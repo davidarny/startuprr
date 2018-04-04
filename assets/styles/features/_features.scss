@@ -1,3 +1,4 @@
+@import "../placeholders";
 @import "../mixins";
 
 .features {
@@ -5,14 +6,28 @@
     $icon-font-size: 40px;
     $list-item-max-width: 320px;
 
-    padding: $base-padding 0;
+    padding: $base-padding 0 0;
+    position: relative;
+
+    .section__inner {
+        overflow: hidden;
+    }
 
     &__list {
+        @include breakpoint($md) {
+            $min-font: 12px;
+            $max-font: 16px;
+
+            @include fluid-type($xs, $sm, $min-font, $max-font);
+        }
         padding-top: 90px;
         padding-left: 15px;
 
         &__item {
-            margin-bottom: 70px;
+            @include breakpoint($md) {
+                max-width: none;
+            }
+            margin: auto auto 70px;
             max-width: $list-item-max-width;
 
             &:last-child {
@@ -22,10 +37,16 @@
     }
 
     &__icon {
+        @include breakpoint($md) {
+            text-align: center;
+        }
+        @include breakpoint($xs) {
+            text-align: left;
+        }
         @include square_size($icon-font-size);
         width: 20%;
         display: block;
-        font-size: $icon-font-size;
+        font-size: em($icon-font-size);
         float: left;
     }
 
@@ -42,5 +63,27 @@
 
     &__subtitle {
         @extend .offerings__item__subtitle;
+    }
+
+    &__ipad__wrapper {
+        @extend .features__list;
+        text-align: right;
+        position: relative;
+    }
+
+    &__ipad {
+        @extend %bg-image-contain;
+        @include background-image('~assets/images/ipad.png');
+        background-position: bottom right;
+        width: 100%;
+        height: em(539px);
+        transform: translateY(10%);
+
+        &--landscape {
+            @include background-image('~assets/images/ipad-landscape.png');
+            @include position($right: 5%, $bottom: -5%, $isAbsolute: true);
+            height: em(392px);
+            background-position: bottom center;
+        }
     }
 }

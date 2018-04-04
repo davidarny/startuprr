@@ -1,3 +1,5 @@
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/variables";
+
 // Colors
 $main-color: #333333 !default;
 $background-color: #f9f9f9 !default;
@@ -8,12 +10,10 @@ $secondary-text-color: #8a8a8a !default;
 $raleway-font: 'Raleway', sans-serif;
 
 // Breakpoints
-$lg: 1200px;
-$xmd: 1024px;
-$md: 768px;
-$xsm: 414px;
-$sm: 375px;
-$xs: 320px;
+$lg: $screen-lg;
+$md: $screen-md;
+$sm: $screen-sm;
+$xs: $screen-xs;
 
 // Other
 $base-border-radius: 4px !default;
