@@ -72,17 +72,20 @@
     }
 
     &__ipad {
+        $height: 539px;
+        $landscape-height: 392px;
+
         @extend %bg-image-contain;
         @include background-image('~assets/images/ipad.png');
         background-position: bottom right;
         width: 100%;
-        height: em(539px);
+        height: em($height);
         transform: translateY(10%);
 
         &--landscape {
             @include background-image('~assets/images/ipad-landscape.png');
             @include position($right: 5%, $bottom: -5%, $isAbsolute: true);
-            height: em(392px);
+            height: em($landscape-height);
             background-position: bottom center;
         }
     }
