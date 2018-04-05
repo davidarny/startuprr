@@ -1,0 +1,30 @@
+@import "../mixins";
+@import "../variables";
+
+.more-features {
+    $features-padding: 20px;
+
+    @extend .features;
+
+    .features__title {
+        color: $features-title-color;
+    }
+
+    .features__list__item {
+        @include breakpoint($lg, $max-min: min-width) {
+            width: 33%;
+            max-width: none;
+            padding-right: $features-padding;
+        }
+        @include breakpoint($md, $lg) {
+            width: 50%;
+            max-width: none;
+            padding-right: $features-padding;
+        }
+        @include breakpoint($md - $separator) {
+            width: 100%;
+            max-width: none;
+        }
+        float: left;
+    }
+}

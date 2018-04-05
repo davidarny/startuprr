@@ -37,17 +37,12 @@
         }
 
         &__title {
-            color: $offerings-title-color;
-            text-transform: uppercase;
-            line-height: 1.2;
-            font-weight: bold;
-            margin: auto auto em(($item-bottom-margin - 15px));
+            @extend .features__title;
+            color: $features-title-color !important;
         }
 
         &__subtitle {
-            color: $secondary-text-color;
-            line-height: 1.7;
-            margin: auto auto em(($item-bottom-margin - 15px));
+            @extend .features__content
         }
     }
 

@@ -1,0 +1,40 @@
+@import "../mixins";
+
+$list-item-max-width: 320px;
+$item-bottom-margin: 30px;
+
+.features__list__item {
+    $margin-bottom: 75px;
+
+    @include breakpoint($md) {
+        max-width: none;
+    }
+    margin: auto auto $margin-bottom;
+    max-width: $list-item-max-width;
+
+    &:last-child {
+        @include breakpoint($md) {
+            margin-bottom: $margin-bottom;
+        }
+        margin-bottom: 0;
+    }
+}
+
+.features__description {
+    width: 80%;
+    float: right;
+    display: block;
+}
+
+.features__title {
+    color: $features-title-color;
+    text-transform: uppercase;
+    line-height: 1.2;
+    font-weight: bold;
+    margin: auto auto em(($item-bottom-margin - 15px));
+}
+
+.features__content {
+    color: $secondary-text-color;
+    line-height: 1.7;
+}
