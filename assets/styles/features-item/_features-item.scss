@@ -2,6 +2,8 @@
 
 $list-item-max-width: 320px;
 $item-bottom-margin: 30px;
+$subtitle-bottom-margin: 20px;
+$title-bottom-margin: 10px;
 
 .features__list__item {
     $margin-bottom: 75px;
@@ -31,10 +33,17 @@ $item-bottom-margin: 30px;
     text-transform: uppercase;
     line-height: 1.2;
     font-weight: bold;
-    margin: auto auto em(($item-bottom-margin - 15px));
+    margin: auto auto em($title-bottom-margin);
 }
 
 .features__content {
     color: $secondary-text-color;
     line-height: 1.7;
+}
+
+.features__subtitle {
+    font-size: 12px;
+    color: #aaaaaa;
+    line-height: 1.2;
+    margin: auto auto em($subtitle-bottom-margin);
 }

@@ -1,8 +1,10 @@
 @import "../mixins";
 @import "../variables";
+@import "../placeholders";
 
 .more-features {
     $features-padding: 20px;
+    $features-icon-font-size: 28px;
 
     @extend .features;
 
@@ -26,5 +28,28 @@
             max-width: none;
         }
         float: left;
+    }
+
+    .features__icon {
+        font-size: em($features-icon-font-size);
+        position: relative;
+        height: 70px;
+
+        &:before {
+            @extend %all-center;
+            @extend %bg-image-cover;
+            @include background-image("~assets/images/more-features-icon.png");
+            content: '';
+            width: 40px;
+            height: inherit;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .ion {
+            @extend %all-center;
+            top: 12.5px;
+            color: $background-color;
+        }
     }
 }
