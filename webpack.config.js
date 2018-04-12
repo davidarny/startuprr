@@ -17,6 +17,8 @@ const APP_TITLE = "Startuprr Project";
 
 module.exports = {
     cache: true,
+    bail: true,
+    target: "web",
     entry: {
         vendor: ["bootstrap-sass", "jquery"],
         bundle: [path.join(APP_DIR, "index")],
@@ -36,7 +38,7 @@ module.exports = {
         new CleanWebpackPlugin([OUTPUT_PATH]),
         new BundleAnalyzerPlugin({
             analyzerPort: BUNDLE_ANALYZER_PORT,
-            openAnalyzer: true,
+            openAnalyzer: IS_DEV,
         }),
         new webpack.DefinePlugin({
             IS_DEV: JSON.stringify(IS_DEV),
@@ -45,6 +47,18 @@ module.exports = {
             cache: IS_DEV,
             template: TEMPLATE_PATH,
             title: APP_TITLE,
+            minify: {
+                removeComments: !IS_DEV,
+                collapseWhitespace: !IS_DEV,
+                removeRedundantAttributes: !IS_DEV,
+                useShortDoctype: !IS_DEV,
+                removeEmptyAttributes: !IS_DEV,
+                removeStyleLinkTypeAttributes: !IS_DEV,
+                keepClosingSlash: !IS_DEV,
+                minifyJS: !IS_DEV,
+                minifyCSS: !IS_DEV,
+                minifyURLs: !IS_DEV,
+            },
         }),
         new webpack.ProvidePlugin({
             "$": "jquery",
@@ -114,5 +128,12 @@ module.exports = {
                 },
             },
         ],
+    },
+    node: {
+        dgram: "empty",
+        fs: "empty",
+        net: "empty",
+        tls: "empty",
+        child_process: "empty",
     },
 };

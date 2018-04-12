@@ -2,19 +2,18 @@ const path = require("path");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const config = require("./webpack.config");
-const ReloadPlugin = require("reload-html-webpack-plugin");
+const LiveReloadPlugin = require("webpack-livereload-plugin");
 
-const ASSETS_PATH = path.join(__dirname, "assets");
 const DEV_SERVER_PORT = 8080;
 
 module.exports = merge(config, {
     devtool: "eval",
+    watch: true,
     devServer: {
         open: true,
-        watchContentBase: true,
-        hot: true,
+        hot: false,
         port: DEV_SERVER_PORT,
-        contentBase: [ASSETS_PATH],
+        historyApiFallback: true,
     },
     output: {
         pathinfo: true,
@@ -22,8 +21,13 @@ module.exports = merge(config, {
         filename: "[name].js",
     },
     plugins: [
-        new ReloadPlugin(),
+        new LiveReloadPlugin({
+            appendScriptTag: true,
+        }),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
     ],
+    performance: {
+        hints: false,
+    },
 });

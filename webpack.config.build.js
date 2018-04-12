@@ -16,22 +16,23 @@ module.exports = merge(config, {
     },
     plugins: [
         new UglifyJsPlugin({
-            sourceMap: true,
             parallel: true,
-            cache: IS_DEV,
+            cache: true,
             uglifyOptions: {
-                beautify: false,
-                comments: false,
+                ecma: 8,
                 compress: {
-                    sequences: true,
-                    booleans: true,
-                    loops: true,
-                    unused: true,
                     warnings: false,
-                    drop_console: !IS_DEV,
-                    unsafe: true,
+                    comparisons: false,
+                },
+                mangle: {
+                    safari10: true,
+                },
+                output: {
+                    comments: false,
+                    ascii_only: true,
                 },
             },
+            sourceMap: !IS_DEV,
         }),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
