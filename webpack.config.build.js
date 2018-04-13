@@ -1,25 +1,24 @@
 const webpack = require("webpack");
 const merge = require("webpack-merge");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const config = require("./webpack.config");
 const path = require("path");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 const IS_DEV = process.env.NODE_ENV === "development";
-const OUTPUT_PATH = path.join(__dirname, "dist");
 
 module.exports = merge(config, {
-    devtool: "cheap-module-source-map",
+    devtool: "source-map",
     output: {
-        path: OUTPUT_PATH,
+        path: path.join(__dirname, "dist"),
         filename: "[name].[chunkhash].js",
+        chunkFilename: "chunk.[id].[chunkhash:8].js",
     },
     plugins: [
         new UglifyJsPlugin({
             parallel: true,
             cache: true,
             uglifyOptions: {
-                ecma: 8,
                 compress: {
                     warnings: false,
                     comparisons: false,
@@ -34,41 +33,19 @@ module.exports = merge(config, {
             },
             sourceMap: !IS_DEV,
         }),
+        new CompressionPlugin({
+            asset: "[path].gz[query]",
+            algorithm: "gzip",
+            test: /\.js$|\.css$|\.scss$|\.html$/,
+            threshold: 10240,
+            minRatio: 0,
+        }),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
-            names: ["vendor", "manifest"],
-        }),
-        new ExtractTextPlugin({
-            filename: "[name].[chunkhash].css",
-            allChunks: !IS_DEV,
+            names: ["bundle", "vendor", "manifest"],
+            filename: "[name].[chunkhash].js",
+            children: true,
+            minChunks: 2,
         }),
     ],
-    module: {
-        rules: [
-            // CSS/SASS
-            {
-                test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: [
-                        {
-                            loader: "css-loader",
-                            options: {
-                                sourceMap: true,
-                                minimize: !IS_DEV,
-                            },
-                        },
-                        "resolve-url-loader",
-                        {
-                            loader: "sass-loader",
-                            options: {
-                                sourceMap: true,
-                                includePaths: [OUTPUT_PATH],
-                            },
-                        },
-                    ],
-                }),
-            },
-        ],
-    },
 });

@@ -1,4 +1,3 @@
-const path = require("path");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const config = require("./webpack.config");
@@ -21,11 +20,8 @@ module.exports = merge(config, {
         filename: "[name].js",
     },
     plugins: [
-        new LiveReloadPlugin({
-            appendScriptTag: true,
-        }),
+        new LiveReloadPlugin({appendScriptTag: true}),
         new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
     ],
     performance: {
         hints: false,

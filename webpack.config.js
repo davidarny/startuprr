@@ -3,6 +3,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const OUTPUT_PATH = path.join(__dirname, "dist");
 const IS_DEV = process.env.NODE_ENV === "development";
@@ -20,8 +21,8 @@ module.exports = {
     bail: true,
     target: "web",
     entry: {
-        vendor: ["bootstrap-sass", "jquery"],
-        bundle: [path.join(APP_DIR, "index")],
+        vendor: ["bootstrap-sass", "jquery", path.join(ASSETS_DIR, "styles", "vendor.scss")],
+        bundle: [path.join(APP_DIR, "index.js")],
     },
     resolve: {
         modules: [
@@ -65,8 +66,13 @@ module.exports = {
             "jQuery": "jquery",
             "window.jQuery": "jquery",
         }),
+        new ExtractTextPlugin({
+            filename: IS_DEV ? "[name].css" : "[name].[chunkhash].css",
+            allChunks: !IS_DEV,
+        }),
     ],
     module: {
+        unsafeCache: IS_DEV,
         rules: [
             // Babel
             {
@@ -81,24 +87,26 @@ module.exports = {
             // CSS/SCSS
             {
                 test: /\.scss$/,
-                use: [
-                    "style-loader",
-                    {
-                        loader: "css-loader",
-                        options: {
-                            sourceMap: true,
-                            minimize: !IS_DEV,
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [
+                        {
+                            loader: "css-loader",
+                            options: {
+                                sourceMap: true,
+                                minimize: !IS_DEV,
+                            },
                         },
-                    },
-                    "resolve-url-loader",
-                    {
-                        loader: "sass-loader",
-                        options: {
-                            sourceMap: true,
-                            includePaths: [ASSETS_DIR],
+                        "resolve-url-loader",
+                        {
+                            loader: "sass-loader",
+                            options: {
+                                sourceMap: true,
+                                includePaths: [OUTPUT_PATH],
+                            },
                         },
-                    },
-                ],
+                    ],
+                }),
             },
             // Handlebars
             {
@@ -119,13 +127,51 @@ module.exports = {
                     },
                 ],
             },
-            // Images & fonts
+            // Fonts
             {
-                test: /\.(jpe?g|png|gif|webp|woff2?|ttf|otf|eot|svg)$/,
-                loader: "file-loader",
-                options: {
-                    name: "[path][name].[hash].[ext]",
-                },
+                test: /\.(woff2?|ttf|otf|eot|svg)$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: IS_DEV ? "[path][name].[ext]" : "[path][name].[hash].[ext]",
+                        },
+                    },
+                ],
+            },
+            // Images
+            {
+                test: /\.(jpe?g|png|gif|webp)$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: IS_DEV ? "[path][name].[ext]" : "[path][name].[hash].[ext]",
+                        },
+                    },
+                    !IS_DEV && {
+                        loader: "image-webpack-loader",
+                        options: {
+                            mozjpeg: {
+                                progressive: true,
+                                quality: 65,
+                            },
+                            optipng: {
+                                enabled: false,
+                            },
+                            pngquant: {
+                                quality: "65-90",
+                                speed: 4,
+                            },
+                            gifsicle: {
+                                interlaced: false,
+                            },
+                            webp: {
+                                quality: 75,
+                            },
+                        },
+                    },
+                ].filter(option => option !== false),
             },
         ],
     },
