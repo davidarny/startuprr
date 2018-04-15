@@ -4,7 +4,6 @@ const path = require("path");
 const DIST_PATH = "dist";
 
 const server = hapi.server({
-    host: process.env.HOST || "localhost",
     port: process.env.PORT || 8080,
     routes: {
         files: {
