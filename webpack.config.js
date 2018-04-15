@@ -1,7 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
@@ -13,7 +12,6 @@ const ASSETS_DIR = path.join(__dirname, "assets");
 const TEMPLATES_PATH = path.join(__dirname, "assets", "templates");
 const TEMPLATE_PATH = path.join(__dirname, "index.hbs");
 const ROOT_DIR = path.join(__dirname, ".");
-const BUNDLE_ANALYZER_PORT = 8888;
 const APP_TITLE = "Startuprr Project";
 
 module.exports = {
@@ -37,10 +35,6 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin([OUTPUT_PATH]),
-        new BundleAnalyzerPlugin({
-            analyzerPort: BUNDLE_ANALYZER_PORT,
-            openAnalyzer: IS_DEV,
-        }),
         new webpack.DefinePlugin({
             IS_DEV: JSON.stringify(IS_DEV),
         }),
