@@ -29,4 +29,4 @@ async function start() {
     console.log(`Server running at: ${server.info.uri}`);
 }
 
-start().catch(error => console.error(error));
+start().catch(error => console.error("[SERVER_ERROR]: ", error));
