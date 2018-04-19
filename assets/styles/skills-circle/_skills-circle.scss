@@ -1,0 +1,76 @@
+@import "../placeholders";
+@import "../mixins";
+@import "../functions";
+
+.skills__circle {
+    $bottom-margin: 40px;
+
+    height: em(180px);
+    display: block;
+    margin: auto auto $bottom-margin;
+}
+
+.circle {
+    $progress-border-width: 4px;
+
+    &__progress {
+        @include square_size(120px - ($progress-border-width * 2));
+        margin: $progress-border-width 0 0 $progress-border-width;
+        background-color: $main-color;
+        display: inline-block;
+        border-radius: 50%;
+        position: relative;
+    }
+
+    &__title {
+        color: $secondary-text-color;
+        font-weight: 600;
+        text-transform: uppercase;
+        height: 20%;
+        text-align: center;
+        padding-top: 10%;
+    }
+
+    &__percent {
+        @extend %vertical-center;
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 30px;
+        font-weight: 600;
+        vertical-align: bottom;
+
+        &__sign {
+            font-size: 16px;
+            vertical-align: bottom;
+        }
+    }
+}
+
+.circle__progress__overlay {
+    $step: 1;
+    $loops: round(100 / $step);
+    $half: round($loops / 2);
+    $increment: 360 / $loops;
+
+    @include square_size(120px);
+    display: block;
+    margin: auto;
+    border-radius: 50%;
+
+    @for $i from 0 through $loops {
+        $bar-color: $secondary-color;
+        $background-bar-color: $background-color;
+
+        &--#{$i*$step} {
+            @if $i < $half {
+                $nextdeg: 90deg + ( $increment * $i );
+                background-image: linear-gradient(90deg, $main-color 50%, $main-color 50%, $main-color), linear-gradient($nextdeg, $bar-color 50%, $main-color 50%, $main-color);
+            } @else {
+                $nextdeg: -90deg + ( $increment * ( $i - $half ) );
+                background-image: linear-gradient($nextdeg, $bar-color 50%, transparent 50%, transparent), linear-gradient(270deg, $bar-color 50%, $background-bar-color 50%, $background-bar-color);
+            }
+
+        }
+    }
+}

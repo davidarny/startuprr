@@ -48,7 +48,7 @@
 
         .ion {
             @extend %all-center;
-            top: 20px;
+            top: 20px !important;
             color: $background-color;
         }
     }

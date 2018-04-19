@@ -8,6 +8,7 @@
 
     @extend %viewport-height;
     position: relative;
+    padding: 0;
 
     &__inner {
         @extend %vertical-center;

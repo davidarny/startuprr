@@ -5,7 +5,9 @@
     $icon-font-size: 26px;
     $icon-border-radius: 4px;
     $icon-square-size: 38px;
+    $base-padding: 75px;
 
+    padding: $base-padding 0 0;
     width: 100%;
     position: relative;
     color: $main-color;
@@ -29,6 +31,10 @@
 
         &:before {
             @include position($top: 50%, $left: 50%, $isAbsolute: true);
+            transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+        }
+
+        &--rotated:before {
             transform: translateX(-50%) translateY(-50%) rotate(45deg);
         }
     }

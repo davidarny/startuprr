@@ -2,11 +2,9 @@
 @import "../mixins";
 
 .features {
-    $base-padding: 75px;
     $icon-font-size: 40px;
     $list-item-max-width: 320px;
 
-    padding: $base-padding 0 0;
     position: relative;
 
     .section__inner {
