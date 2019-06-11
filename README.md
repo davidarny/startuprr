@@ -1,6 +1,6 @@
 # Startuprr
 
-[https://startuprr.herokuapp.com/](https://startuprr.herokuapp.com/) - frontend course landing project
+frontend course landing project
 
 ## Setup
 
