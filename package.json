@@ -47,7 +47,7 @@
     "inert": "^5.1.0",
     "ionicons": "^3.0.0",
     "jquery": "^3.5.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^8.0.0",
     "purify-css": "^1.2.5",
     "resolve-url-loader": "^2.3.0",
     "sass-loader": "^6.0.7",
